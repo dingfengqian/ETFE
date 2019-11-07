@@ -1,0 +1,14 @@
+# the following code is implemented by R
+
+# import the cpm package
+library('cpm')
+# read the IMF-Entropy data
+data = read.csv('filename')
+x = data[,]
+# use the function to calculate the GLR statistics
+res = processStream(x, cpmType = 'GLR', ARL0 = 500, startup = 1500)
+# plot the photo and print the change points
+plot(x, type='l')
+abline(v = res$detectionTimes, lty=2)
+abline(v = res$changePoints, lty=2, col='red')
+res$changePoints
